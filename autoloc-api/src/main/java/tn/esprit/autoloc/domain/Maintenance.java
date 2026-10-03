@@ -27,4 +27,7 @@ public class Maintenance {
 
     @Column(nullable = false, length = 255)
     private String description;
+
+    @ManyToOne (cascade = CascadeType.PERSIST)
+    Vehicule vehicule;
 }

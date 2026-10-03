@@ -5,6 +5,10 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.Fetch;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "agence")
@@ -29,4 +33,10 @@ public class Agence {
 
     @Column(nullable = false, length = 20)
     private String telephone;
+
+    @OneToMany (mappedBy = "agence" , fetch = FetchType.LAZY)
+    List<Vehicule> vehicules = new ArrayList<>();
+
+    @OneToMany (mappedBy = "agence" , fetch = FetchType.LAZY)
+    List<Employe> employees = new ArrayList<>();
 }
