@@ -33,8 +33,8 @@ public class IEmployeServiceImp implements IEmployeService {
     }
 
     @Override
-    public void supprimerEmploye(Employe employe) {
-        employeRepository.delete(employe);
+    public void supprimerEmploye(long id) {
+        employeRepository.deleteById(id);
 
     }
 }

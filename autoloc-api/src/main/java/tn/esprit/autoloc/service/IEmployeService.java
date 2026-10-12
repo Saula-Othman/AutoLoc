@@ -15,7 +15,7 @@ public interface IEmployeService {
 
     Employe afficherEmployeById(Long id);
 
-    void supprimerEmploye(Employe employe);
+    void supprimerEmploye(long id);
 
 
 }

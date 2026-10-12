@@ -32,8 +32,8 @@ public class IReservationServiceImp implements IReservationService {
     }
 
     @Override
-    public void supprimerReservation(Reservation reservation) {
-        reservationRepository.delete(reservation);
+    public void supprimerReservation(long id) {
+        reservationRepository.deleteById(id);
 
     }
 }

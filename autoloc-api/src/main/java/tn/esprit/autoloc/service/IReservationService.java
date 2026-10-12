@@ -14,5 +14,5 @@ public interface IReservationService {
 
     Reservation afficherReservationById(long id);
 
-    void supprimerReservation(Reservation reservation);
+    void supprimerReservation(long id);
 }
