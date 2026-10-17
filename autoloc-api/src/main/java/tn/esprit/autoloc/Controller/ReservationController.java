@@ -14,16 +14,6 @@ public class ReservationController {
 
     private final IReservationService reservationService;
 
-    @GetMapping("/afficherToutesReservations")
-    public List<Reservation> afficherToutesReservations() {
-        return reservationService.afficherToutesReservations();
-    }
-
-    @GetMapping("/afficherReservation/{idReservation}")
-    public Reservation afficherReservationById(@PathVariable Long idReservation) {
-        return reservationService.afficherReservationById(idReservation);
-    }
-
     @PostMapping("/ajouterReservation")
     public Reservation ajouterReservation(@RequestBody Reservation reservation) {
         return reservationService.ajouterReservation(reservation);
@@ -32,6 +22,16 @@ public class ReservationController {
     @PutMapping("/modifierReservation")
     public Reservation modifierReservation(@RequestBody Reservation reservation) {
         return reservationService.modifierReservation(reservation);
+    }
+
+    @GetMapping("/afficherToutesReservations")
+    public List<Reservation> afficherToutesReservations() {
+        return reservationService.afficherToutesReservations();
+    }
+
+    @GetMapping("/afficherReservation/{idReservation}")
+    public Reservation afficherReservationById(@PathVariable Long idReservation) {
+        return reservationService.afficherReservationById(idReservation);
     }
 
     @DeleteMapping("/supprimerReservation/{idReservation}")

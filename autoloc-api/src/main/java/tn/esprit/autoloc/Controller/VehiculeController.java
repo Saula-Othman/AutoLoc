@@ -14,16 +14,6 @@ public class VehiculeController {
 
     private final IVehiculeService vehiculeService;
 
-    @GetMapping("/afficherToutesVehicules")
-    public List<Vehicule> afficherToutesVehicules() {
-        return vehiculeService.afficherToutesVehicules();
-    }
-
-    @GetMapping("/afficherVehicule/{idVehicule}")
-    public Vehicule afficherVehiculeById(@PathVariable Long idVehicule) {
-        return vehiculeService.afficherVehiculeById(idVehicule);
-    }
-
     @PostMapping("/ajouterVehicule")
     public Vehicule ajouterVehicule(@RequestBody Vehicule vehicule) {
         return vehiculeService.ajouterVehicule(vehicule);
@@ -32,6 +22,16 @@ public class VehiculeController {
     @PutMapping("/modifierVehicule")
     public Vehicule modifierVehicule(@RequestBody Vehicule vehicule) {
         return vehiculeService.modifierVehicule(vehicule);
+    }
+
+    @GetMapping("/afficherToutesVehicules")
+    public List<Vehicule> afficherToutesVehicules() {
+        return vehiculeService.afficherToutesVehicules();
+    }
+
+    @GetMapping("/afficherVehicule/{idVehicule}")
+    public Vehicule afficherVehiculeById(@PathVariable Long idVehicule) {
+        return vehiculeService.afficherVehiculeById(idVehicule);
     }
 
     @DeleteMapping("/supprimerVehicule/{idVehicule}")

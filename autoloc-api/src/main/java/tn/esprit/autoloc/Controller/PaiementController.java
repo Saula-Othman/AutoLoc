@@ -14,16 +14,6 @@ public class PaiementController {
 
     private final IPaiementService paiementService;
 
-    @GetMapping("/afficherToutesPaiements")
-    public List<Paiement> afficherToutesPaiements() {
-        return paiementService.afficherToutesPaiements();
-    }
-
-    @GetMapping("/afficherPaiement/{idPaiement}")
-    public Paiement afficherPaiementById(@PathVariable Long idPaiement) {
-        return paiementService.afficherPaiementById(idPaiement);
-    }
-
     @PostMapping("/ajouterPaiement")
     public Paiement ajouterPaiement(@RequestBody Paiement paiement) {
         return paiementService.ajouterPaiement(paiement);
@@ -32,6 +22,16 @@ public class PaiementController {
     @PutMapping("/modifierPaiement")
     public Paiement modifierPaiement(@RequestBody Paiement paiement) {
         return paiementService.modifierPaiement(paiement);
+    }
+
+    @GetMapping("/afficherToutesPaiements")
+    public List<Paiement> afficherToutesPaiements() {
+        return paiementService.afficherToutesPaiements();
+    }
+
+    @GetMapping("/afficherPaiement/{idPaiement}")
+    public Paiement afficherPaiementById(@PathVariable Long idPaiement) {
+        return paiementService.afficherPaiementById(idPaiement);
     }
 
     @DeleteMapping("/supprimerPaiement/{idPaiement}")

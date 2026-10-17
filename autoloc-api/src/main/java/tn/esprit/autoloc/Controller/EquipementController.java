@@ -14,6 +14,16 @@ public class EquipementController {
 
     private final IEquipementService equipementService;
 
+    @PostMapping("/ajouterEquipement")
+    public Equipement ajouterEquipement(@RequestBody Equipement equipement) {
+        return equipementService.ajouterEquipement(equipement);
+    }
+
+    @PutMapping("/modifierEquipement")
+    public Equipement modifierEquipement(@RequestBody Equipement equipement) {
+        return equipementService.modifierEquipement(equipement);
+    }
+
     @GetMapping("/afficherToutesEquipements")
     public List<Equipement> afficherToutesEquipements() {
         return equipementService.afficherToutesEquipement();
@@ -24,15 +34,7 @@ public class EquipementController {
         return equipementService.afficherEquipementById(idEquipement);
     }
 
-    @PostMapping("/ajouterEquipement")
-    public Equipement ajouterEquipement(@RequestBody Equipement equipement) {
-        return equipementService.ajouterEquipement(equipement);
-    }
 
-    @PutMapping("/modifierEquipement")
-    public Equipement modifierEquipement(@RequestBody Equipement equipement) {
-        return equipementService.modifierEquipement(equipement);
-    }
 
     @DeleteMapping("/supprimerEquipement/{idEquipement}")
     public void supprimerEquipement(@PathVariable Long idEquipement) {

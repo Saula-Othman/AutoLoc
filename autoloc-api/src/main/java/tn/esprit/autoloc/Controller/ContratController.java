@@ -14,19 +14,6 @@ public class ContratController {
 
 
     private final IContratService contratService;
-
-    @GetMapping("/afficherToutesContrats")
-    public List<Contrat> afficherToutesContrats() {
-        return contratService.afficherToutesContrat();
-    }
-
-
-    @GetMapping("/afficherContrats/{idContrat}")
-    public Contrat affichercontratById(@PathVariable long idContrat) {
-        return contratService.afficherContratById(idContrat);
-    }
-
-
     @PostMapping("/ajouterContrats")
     public Contrat ajouterContrat(@RequestBody Contrat contrat) {
         return contratService.ajouterContrat(contrat);
@@ -35,6 +22,16 @@ public class ContratController {
     @PutMapping("/modifierContrats")
     public Contrat modifierContrat(@RequestBody Contrat contrat) {
         return contratService.modifierContrat(contrat);
+    }
+
+    @GetMapping("/afficherToutesContrats")
+    public List<Contrat> afficherToutesContrats() {
+        return contratService.afficherToutesContrat();
+    }
+
+    @GetMapping("/afficherContrats/{idContrat}")
+    public Contrat affichercontratById(@PathVariable long idContrat) {
+        return contratService.afficherContratById(idContrat);
     }
 
     @DeleteMapping("/supprimerContrats/{idContrat}")

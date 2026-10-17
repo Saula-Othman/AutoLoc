@@ -14,6 +14,19 @@ public class EmployeController {
 
     private final IEmployeService employeService;
 
+
+    @PostMapping("/ajouterEmploye")
+    public Employe ajouterEmploye(@RequestBody Employe employe) {
+        return employeService.ajouterEmploye(employe);
+    }
+
+
+    @PutMapping("/modifierEmploye")
+    public Employe modifierEmploye(@RequestBody Employe employe) {
+        return employeService.modifierEmploye(employe);
+    }
+
+
     @GetMapping("/afficherToutesEmployes")
     public List<Employe> afficherToutesEmployes() {
         return employeService.afficherToutesEmployes();
@@ -22,16 +35,6 @@ public class EmployeController {
     @GetMapping("/afficherEmploye/{idEmploye}")
     public Employe afficherEmployeById(@PathVariable Long idEmploye) {
         return employeService.afficherEmployeById(idEmploye);
-    }
-
-    @PostMapping("/ajouterEmploye")
-    public Employe ajouterEmploye(@RequestBody Employe employe) {
-        return employeService.ajouterEmploye(employe);
-    }
-
-    @PutMapping("/modifierEmploye")
-    public Employe modifierEmploye(@RequestBody Employe employe) {
-        return employeService.modifierEmploye(employe);
     }
 
     @DeleteMapping("/supprimerEmploye/{idEmploye}")

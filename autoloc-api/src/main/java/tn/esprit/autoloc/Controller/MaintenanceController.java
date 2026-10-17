@@ -14,6 +14,16 @@ public class MaintenanceController {
 
     private final IMaintenanceService maintenanceService;
 
+    @PostMapping("/ajouterMaintenance")
+    public Maintenance ajouterMaintenance(@RequestBody Maintenance maintenance) {
+        return maintenanceService.ajouterMaintenance(maintenance);
+    }
+
+    @PutMapping("/modifierMaintenance")
+    public Maintenance modifierMaintenance(@RequestBody Maintenance maintenance) {
+        return maintenanceService.modifierMaintenance(maintenance);
+    }
+
     @GetMapping("/afficherToutesMaintenances")
     public List<Maintenance> afficherToutesMaintenances() {
         return maintenanceService.afficherToutesMaintenance();
@@ -24,15 +34,9 @@ public class MaintenanceController {
         return maintenanceService.afficherMaintenanceById(idMaintenance);
     }
 
-    @PostMapping("/ajouterMaintenance")
-    public Maintenance ajouterMaintenance(@RequestBody Maintenance maintenance) {
-        return maintenanceService.ajouterMaintenance(maintenance);
-    }
 
-    @PutMapping("/modifierMaintenance")
-    public Maintenance modifierMaintenance(@RequestBody Maintenance maintenance) {
-        return maintenanceService.modifierMaintenance(maintenance);
-    }
+
+
 
     @DeleteMapping("/supprimerMaintenance/{idMaintenance}")
     public void supprimerMaintenance(@PathVariable Long idMaintenance) {
