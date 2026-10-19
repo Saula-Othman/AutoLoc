@@ -17,25 +17,25 @@ public class EquipementController {
 
     private final IEquipementService equipementService;
 
-    @Operation(summary = "Ajouter un équipement")
+    @Operation(summary = "Ajouter un équipement", description = "Crée un équipement")
     @PostMapping("/ajouterEquipement")
     public Equipement ajouterEquipement(@RequestBody Equipement equipement) {
         return equipementService.ajouterEquipement(equipement);
     }
 
-    @Operation(summary = "Modifier un équipement")
+    @Operation(summary = "Modifier un équipement", description = "Modifier un équipement")
     @PutMapping("/modifierEquipement")
     public Equipement modifierEquipement(@RequestBody Equipement equipement) {
         return equipementService.modifierEquipement(equipement);
     }
 
-    @Operation(summary = "Lister les équipements")
+    @Operation(summary = "Lister les équipements", description = "Afficher la liste de tous les équipements")
     @GetMapping("/afficherToutesEquipements")
     public List<Equipement> afficherToutesEquipements() {
         return equipementService.afficherToutesEquipement();
     }
 
-    @Operation(summary = "Afficher un équipement")
+    @Operation(summary = "Afficher un équipement", description = "Afficher un équipement selon son id")
     @GetMapping("/afficherEquipement/{idEquipement}")
     public Equipement afficherEquipementById(@PathVariable Long idEquipement) {
         return equipementService.afficherEquipementById(idEquipement);
@@ -43,7 +43,7 @@ public class EquipementController {
 
 
 
-    @Operation(summary = "Supprimer un équipement")
+    @Operation(summary = "Supprimer un équipement", description = "Supprime un équipement selon son id")
     @DeleteMapping("/supprimerEquipement/{idEquipement}")
     public void supprimerEquipement(@PathVariable Long idEquipement) {
         equipementService.supprimerEquipement(idEquipement);

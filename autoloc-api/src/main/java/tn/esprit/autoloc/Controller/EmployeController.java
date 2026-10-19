@@ -18,33 +18,33 @@ public class EmployeController {
     private final IEmployeService employeService;
 
 
-    @Operation(summary = "Ajouter un employé")
+    @Operation(summary = "Ajouter un employé", description = "Crée un employé")
     @PostMapping("/ajouterEmploye")
     public Employe ajouterEmploye(@RequestBody Employe employe) {
         return employeService.ajouterEmploye(employe);
     }
 
 
-    @Operation(summary = "Modifier un employé")
+    @Operation(summary = "Modifier un employé", description = "Modifier un employé")
     @PutMapping("/modifierEmploye")
     public Employe modifierEmploye(@RequestBody Employe employe) {
         return employeService.modifierEmploye(employe);
     }
 
 
-    @Operation(summary = "Lister les employés")
+    @Operation(summary = "Lister les employés", description = "Afficher la liste de tous les employés")
     @GetMapping("/afficherToutesEmployes")
     public List<Employe> afficherToutesEmployes() {
         return employeService.afficherToutesEmployes();
     }
 
-    @Operation(summary = "Afficher un employé")
+    @Operation(summary = "Afficher un employé", description = "Afficher un employé selon son id")
     @GetMapping("/afficherEmploye/{idEmploye}")
     public Employe afficherEmployeById(@PathVariable Long idEmploye) {
         return employeService.afficherEmployeById(idEmploye);
     }
 
-    @Operation(summary = "Supprimer un employé")
+    @Operation(summary = "Supprimer un employé", description = "Supprime un employé selon son id")
     @DeleteMapping("/supprimerEmploye/{idEmploye}")
     public void supprimerEmploye(@PathVariable Long idEmploye) {
         employeService.supprimerEmploye(idEmploye);
