@@ -45,8 +45,8 @@ public class IVehiculeServiceImp implements IVehiculeService {
     @Override
     @Transactional
     public Vehicule affecterEquipement(Long idVehicule, Long idEquipement) {
-        Vehicule vehicule = vehiculeRepository.findById(idVehicule).orElse(null);
-        Equipement equipement = equipementRepository.findById(idEquipement).orElse(null);
+        Vehicule vehicule = vehiculeRepository.findById(idVehicule).orElseThrow();
+        Equipement equipement = equipementRepository.findById(idEquipement).orElseThrow();
         vehicule.getEquipement().add(equipement);
         return vehiculeRepository.save(vehicule);
     }
@@ -54,7 +54,7 @@ public class IVehiculeServiceImp implements IVehiculeService {
     @Override
     @Transactional
     public Vehicule desaffecterEquipement(Long idVehicule, Long idEquipement) {
-        Vehicule vehicule = vehiculeRepository.findById(idVehicule).orElse(null);
+        Vehicule vehicule = vehiculeRepository.findById(idVehicule).orElseThrow();
         vehicule.getEquipement().removeIf(e -> e.getIdEquipement().equals(idEquipement));
         return vehiculeRepository.save(vehicule);
     }

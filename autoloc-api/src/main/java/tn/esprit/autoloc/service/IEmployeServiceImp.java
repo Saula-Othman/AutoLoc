@@ -45,7 +45,7 @@ public class IEmployeServiceImp implements IEmployeService {
     @Override
     @Transactional
     public Employe desaffecterEmploye(Long idEmploye) {
-        Employe employe = employeRepository.findById(idEmploye).orElse(null);
+        Employe employe = employeRepository.findById(idEmploye).orElseThrow();
         employe.setAgence(null);
         return employeRepository.save(employe);
     }
@@ -53,8 +53,8 @@ public class IEmployeServiceImp implements IEmployeService {
     @Override
     @Transactional
     public Employe affecterEmploye(Long idEmploye, Long idAgence) {
-        Employe employe = employeRepository.findById(idEmploye).orElse(null);
-        Agence agence = agenceRepository.findById(idAgence).orElse(null);
+        Employe employe = employeRepository.findById(idEmploye).orElseThrow();
+        Agence agence = agenceRepository.findById(idAgence).orElseThrow();
         employe.setAgence(agence);
         return employeRepository.save(employe);
     }
