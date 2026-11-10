@@ -15,7 +15,7 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConst   ructor
+@AllArgsConstructor
 public class Agence {
 
     @Id
