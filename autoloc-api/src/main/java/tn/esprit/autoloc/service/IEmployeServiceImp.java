@@ -2,7 +2,10 @@ package tn.esprit.autoloc.service;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import tn.esprit.autoloc.domain.Agence;
 import tn.esprit.autoloc.domain.Employe;
+import tn.esprit.autoloc.repository.AgenceRepository;
 import tn.esprit.autoloc.repository.EmployeRepository;
 
 import java.util.List;
@@ -11,6 +14,7 @@ import java.util.List;
 public class IEmployeServiceImp implements IEmployeService {
 
     private final EmployeRepository employeRepository;
+    private final AgenceRepository agenceRepository;
 
     @Override
     public Employe ajouterEmploye(Employe employe) {
@@ -36,5 +40,22 @@ public class IEmployeServiceImp implements IEmployeService {
     public void supprimerEmploye(long id) {
         employeRepository.deleteById(id);
 
+    }
+
+    @Override
+    @Transactional
+    public Employe desaffecterEmploye(Long idEmploye) {
+        Employe employe = employeRepository.findById(idEmploye).orElse(null);
+        employe.setAgence(null);
+        return employeRepository.save(employe);
+    }
+
+    @Override
+    @Transactional
+    public Employe affecterEmploye(Long idEmploye, Long idAgence) {
+        Employe employe = employeRepository.findById(idEmploye).orElse(null);
+        Agence agence = agenceRepository.findById(idAgence).orElse(null);
+        employe.setAgence(agence);
+        return employeRepository.save(employe);
     }
 }

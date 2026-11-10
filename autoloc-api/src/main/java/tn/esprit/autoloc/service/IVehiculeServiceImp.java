@@ -2,7 +2,10 @@ package tn.esprit.autoloc.service;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import tn.esprit.autoloc.domain.Equipement;
 import tn.esprit.autoloc.domain.Vehicule;
+import tn.esprit.autoloc.repository.EquipementRepository;
 import tn.esprit.autoloc.repository.VehiculeRepository;
 
 import java.util.List;
@@ -11,6 +14,7 @@ import java.util.List;
 public class IVehiculeServiceImp implements IVehiculeService {
 
     private final VehiculeRepository vehiculeRepository;
+    private final EquipementRepository equipementRepository;
 
     @Override
     public Vehicule ajouterVehicule(Vehicule vehicule) {
@@ -36,5 +40,22 @@ public class IVehiculeServiceImp implements IVehiculeService {
     public void supprimerVehicule(long id) {
         vehiculeRepository.deleteById(id);
 
+    }
+
+    @Override
+    @Transactional
+    public Vehicule affecterEquipement(Long idVehicule, Long idEquipement) {
+        Vehicule vehicule = vehiculeRepository.findById(idVehicule).orElse(null);
+        Equipement equipement = equipementRepository.findById(idEquipement).orElse(null);
+        vehicule.getEquipement().add(equipement);
+        return vehiculeRepository.save(vehicule);
+    }
+
+    @Override
+    @Transactional
+    public Vehicule desaffecterEquipement(Long idVehicule, Long idEquipement) {
+        Vehicule vehicule = vehiculeRepository.findById(idVehicule).orElse(null);
+        vehicule.getEquipement().removeIf(e -> e.getIdEquipement().equals(idEquipement));
+        return vehiculeRepository.save(vehicule);
     }
 }
